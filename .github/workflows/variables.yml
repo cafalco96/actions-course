@@ -1,0 +1,12 @@
+name: Uso de variables
+on: [push]
+env: 
+  DIA_SEMANA: Domingo
+jobs:
+  Uso-dia:
+    env: 
+      NOMBRE: Carlos
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir
+        run: echo "Hola $NOMBRE hoy es $DIA_SEMANA"
