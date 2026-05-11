@@ -10,7 +10,5 @@ jobs:
         uses: actions/setup-node@v6.4.0
         with:
           node-version: '20'
-      - name: Install dependencies
-        run: npm i
       - name: Run file
         run: node main.js
