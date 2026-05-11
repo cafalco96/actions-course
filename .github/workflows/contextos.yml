@@ -1,0 +1,9 @@
+name: Contextos
+run-name: Un contexto usado aqui
+on: [push]
+jobs:
+  saludo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir saludo
+        run: "echo Hola ${{ github.actor }}"
