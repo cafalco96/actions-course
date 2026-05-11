@@ -1,0 +1,33 @@
+name: Expresiones
+run-name: Usar 3 expresiones
+on: 
+  workflow_dispatch:
+    inputs:
+      name: 
+        required: true
+        type: string
+        description: Pon tu nombre
+      edad:
+        required: true
+        type: number
+        description: Pon tu edad
+jobs:
+  tomar-alcohol-mayor:
+    if: ${{ inputs.edad >= 65 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir result
+        run: echo "Oye ${{ inputs.name }} Si puede tomar alcohol, pero deberias pensarlo"
+  tomar-alcohol-normal:
+    if: ${{ inputs.edad >= 18 && inputs.edad < 65 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprime result
+        run: echo hola ${{ inputs.name }} tu si puedes tomar alcohol
+  no-tomar:
+    if: ${{ contains('carlos', inputs.name) || inputs.edad < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir
+        run: echo Ey ${{ inputs.name }} tu no puedes tomar alcohol!!!
+      

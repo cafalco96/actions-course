@@ -1,0 +1,29 @@
+name: Triggers
+run-name: Uso de 3 triggers
+on:
+  push:
+    branches: 
+      - aprendiendo-github-actions
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+  schedule:
+      - cron: '30 17 * * 1'
+jobs:
+  anyjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clonar repo
+        uses: actions/checkout@v6
